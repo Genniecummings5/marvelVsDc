@@ -1,0 +1,630 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color:black;
+  color:white;
+  cursor:url("../image/infinityshine.png"), auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid, .formcontainer{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+header{
+  padding: 0px 40px;
+  background: #FAFD7CFF;
+  gap:30px;
+  grid-template-columns: 3;
+}
+
+#skip{
+  font:white;
+  display:inline;
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+    
+#skip a:focus{
+  position:static;
+  width:auto;
+  height:auto;
+}
+
+#topLogo {
+  grid-column: 1/span 11;
+  display:grid;
+  width:auto;
+  width:60px;
+  height:60px;
+}
+
+header nav {
+  grid-column: 8/ span 6;
+  justify-self: end;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+a, :hover , .submitButton:hover{
+  cursor:url("../image/infinitycursorhover.png"), auto;
+}
+
+a:active, input:active {
+  cursor:url("../image/infinitysnapclick.png"), auto;
+}
+
+.navBar {
+display: grid;
+grid-column: span 1;
+}
+
+.navBar ul{
+  display: flex;
+  margin: 0;
+}
+
+.navBar li{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  width: 150px;
+  height: 58px;
+  align-items: center;
+}
+
+.navBar a{
+  text-decoration:none;
+  color:black;
+  width: 100px;
+  height:50px;
+  display: block; 
+  padding: 15px 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: arial;
+  text-align: center;
+  font-size: 14px;
+  position:relative;
+}
+
+.navBar a:hover{
+  background-color: red;
+  color: white;
+    /**shadow box comic style**/
+    background-size: 10px, 100%;
+    border: 0.4rem solid #000;
+    border-radius:3px;
+    z-index: 5;
+    font-size:18px;
+    position:relative;
+}
+
+main {
+  display:grid; 
+  background-color:black;
+  margin:10vh;
+  gap:20px; 
+}
+
+main > h2 {
+  display: grid;
+  grid-column: span 12;
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 20px;
+  font-weight: bold ;
+  font-size: xx-large;
+}
+
+.imageContainer img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+ 
+ }
+
+/*** two images into one image styling ***/ 
+.imageContainer{
+  background-color: black;
+  grid-column:  span 12;
+  height: 40rem;
+  max-width:100%;
+  display:flex;
+  margin:0;
+  padding:0 ;
+  overflow:hidden;
+  justify-content:center;
+  align-items: center;
+}
+
+
+main .marvelLeft, 
+main .dcRight {
+  display: grid;
+  grid-column: span 12;
+  height:auto;
+  max-width: 40rem;
+  width:100%;
+  animation: slideIn 4s forwards; 
+}
+ 
+img .marvelLeft, .dcRight{
+  height:100%;
+  width:100%;
+}
+
+main .marvelLeft{
+  transform: translateX(-100%);
+}
+
+main .dcRight{
+ transform: translateX(100%);
+}
+
+/*Keyframes for sliding Marvel DC images into one image*/
+@keyframes slideIn {
+  to 
+   {transform: translateX(0%);}
+}
+
+/***when images come together, marvel vs dc will slide down***/
+
+.marvelVsdc {
+  grid-column: span 12;
+  margin:0 auto;
+  text-align: center;
+  border: 0;
+  font-weight: bolder;
+  font-size: 5em;
+  background-image:linear-gradient(to right,
+      rgb(22, 24, 22),
+      rgb(255, 0, 0),
+      rgb(255, 0, 0),
+      rgb(255, 0, 0),
+      rgb(22, 24, 22),
+      rgb(80, 164, 255), 
+      rgb(80, 164, 255), 
+      rgb(80, 164, 255), 
+      rgb(22, 24, 22));
+  position:relative;
+  z-index: 1;
+  color:white;
+  /*padding: .2em 3.5em;*/
+  /*margin: -47px auto 0;*/
+  width:77%;
+  text-transform:uppercase;
+  /*sliding down the images*/
+  animation: slideDownFadeIn;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+}
+
+/*This is Keyframe to animate Marvel vs DC slide down from image*/
+@keyframes slideDownFadeIn {
+  from  {transform: translateY(-100%);
+  opacity:0;}
+
+  to {transform: translateY(0);
+  opacity:1;}
+}
+
+.marvelVsdc::after {
+  content:"";
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  width:100%;
+  height:100%;
+  background-image:linear-gradient(
+    to right, rgb(255, 0, 0),
+  rgb(255, 0, 0),
+  rgb(22, 24, 22),
+  rgb(29, 118, 219),
+  rgb(29, 118, 219)); 
+  z-index:-1;
+  transform: scale(0);
+  transition: transform 250ms ease-in;
+  transform-origin: top;
+}
+
+.marvelVsdc-triggered::after {
+  transform: scale(1);
+}
+
+/*****My love for comics section *****/
+#comicInfo{
+  grid-column: span 12;
+  text-align: center;
+  padding:50px;
+  margin:10px;
+  }
+
+.comicLink{
+  color: gold;
+  background-color: black;
+}
+
+.movieLink:hover{
+  background-color: red;
+ color:white;
+}
+
+
+/****** MARVELlogo ******/
+.marvelBorder{
+  grid-column: span 12;
+  background-color:black;
+  display: grid;
+  place-items:center;
+  margin:50px;
+}
+
+#marvel{
+ /* background-color:red;*/
+  text-align:center;
+  color:white;
+  margin: 10px;
+  text-transform: uppercase;
+  padding-block: 5px;
+  width: 250px;
+  text-transform: uppercase;
+  background-color: red;
+  box-shadow:
+  0 0 0 1.5px white,
+  0 0 0 10px red;
+  font-size:3em;
+}
+
+/**DC logo**/
+.dcBorder{
+  grid-column: span 12;
+  background-color:black;
+  display: grid;
+  place-items: center;
+  font-size:xx-large;
+  margin:50px;
+  padding:0px;
+}
+
+#dc{
+  text-align:center;
+  background-color:white;;
+  color:rgb(29, 118, 219);
+  border: 5px solid rgb(29, 118, 219);
+  border-radius:50%;
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height:100%;
+  box-shadow:
+  0 0 0 1px white,
+  0 0 0 10px white;
+}
+
+/***MARVEL cards***/
+
+/**cards**/
+/**proffessor's pencode**/
+.flip-card {
+    background-image:linear-gradient(
+    to right, 
+     silver,
+     rgb(207, 202, 202),
+     rgb(96, 95, 95),
+     white,
+     silver);
+    width: 350px;
+    height:500px;
+    grid-column: span 4;
+  aspect-ratio: 1/1.5;
+  border-radius: 6px;
+  animation: blinker 5s ease-in-out infinite; 
+  perspective: 1000px;
+  margin-bottom: 20px;
+  }
+
+
+/* Container to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #5b5b5b;
+  color: white;
+  background-image:linear-gradient(
+    to right, 
+     silver,
+     rgb(207, 202, 202),
+     rgb(96, 95, 95),
+     white,
+     silver);
+     text-align: center;
+  font-size:11em;
+  animation: blinker 5s ease-in-out infinite; 
+  perspective: 1000px;
+  border-radius: 6px;
+  
+}
+
+
+/* Style the back side */
+.flip-card-back {
+  background-color: rgb(115, 115, 115);
+  color: white;
+  transform: rotateY(180deg);
+  border-radius: 6px;
+}
+ 
+.card-back{
+  background-color:rgb(207, 207, 207);
+  width:100%;
+  height:100%;
+  top: 0;
+  left: 0;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  background-image:linear-gradient(
+    to right, 
+     silver,
+     rgb(207, 202, 202),
+     rgb(171, 171, 171),
+     white,
+     silver);
+     color:black;
+     font-size: 20px;
+     margin:0;
+     position: relative;
+     overflow:hidden;
+}
+
+.card-back h4{
+  text-align: center;
+  font-size:25px;
+  margin-bottom: 2px;
+}
+
+.card-front .card-back{
+  backface-visibility: hidden;
+  position:absolute;
+  height:100%;
+  width:100%;
+  border-radius: 2rem; 
+  top:0;
+  left:0;
+}
+
+.card:hover .card-container {
+  transform: rotateY(180deg);
+}
+
+.card-back img {
+  border-radius: 6px;
+  height: 100%; 
+  width: 100%; 
+  object-fit: cover;
+}
+
+.text-container {
+  position: absolute;
+  text-align: center;
+  color: white;
+}
+
+.characterName,
+.card__body {
+  margin: 10px 10px;
+}
+/***This is to make the cards glow***/
+@keyframes blinker {
+  0%, 100% {
+    opacity: .90;
+  }
+  50% {
+    opacity: .70;
+  }
+}
+
+/**CLOSING INFO**/
+.closingInfo{
+  grid-column: span 12;
+  text-align: center;
+  padding:50px;
+  margin:10px;
+  }
+
+/***SUBMIT FORM***/
+
+.formContainer{
+  display:grid;
+  grid-column: span 12;
+  border: 2px solid white;
+  width:70%;
+  max-width:700px;
+  margin:auto;
+  height:800px;
+  border-radius:5px;
+  align-items: center;
+  text-shadow: 3px 3px 5px #022602 ;
+  font-size:large ;
+}
+
+ .formContainer p{
+   font-size:28px;
+}
+
+.formGroup{
+  display: grid; 
+  gap:.5em;
+  color:rgb(227, 227, 227);
+  font-size: 24px;
+}
+
+.formContainer h2{
+  text-align:center;
+}
+
+.commentBox {
+  background-color:rgb(142, 142, 142);
+  background-image:url("../image/dcComicslogoresize.jpg");
+  background-size: cover;
+  background-blend-mode: lighten;
+}
+
+.commentBox::placeholder{
+  opacity:1;
+  color:rgb(0, 0, 0);
+  font-size: 25px;
+  font-weight: bolder;
+  text-shadow: 3px 1px 4px #f7f9fa ;
+  text-align: center ;
+}
+
+.submitButton{
+  margin:20px;
+  border-radius:4px;
+}
+
+.submitButton input{
+    background-color: white;
+    border-radius: 4px;
+}
+.submitButton:hover{
+  background-color:rgb(34, 132, 252);
+
+}
+
+input:active{
+  background-color: rgb(238, 238, 117);
+  border:3px solid red;
+  
+}
+
+#backToTop{
+  display:inline-block;
+  color: gold;
+  margin:30px;
+}
+
+.footer{
+  border-top: 2px solid  #FAFD7CFF;
+  height:260px;
+  align-items: center;
+  text-align: center;
+}
+
+.footerContainer p{
+  text-align:center;
+}
+
+.footerContainer img{
+  height:240px;
+  width:240px;
+  text-align: center;
+  align-items: center;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  main img {
+    grid-column: span 12;
+  }
+
+  main .marvelLeft,
+  main .dcRight {
+    max-width: 100%;
+  }
+
+  main .marvelVsdc {
+    width: 100%;
+  }
+
+  main .flip-card {
+    grid-column: span 12;
+  }
+
+  main .formContainer {
+    width: 90%;
+    margin: auto;
+  }
+
+  main .grid,
+  header {
+    grid-template-columns: 1fr;
+  }
+
+  header nav {
+    grid-column: span 12;
+    justify-self: center;
+  }
+
+  .navBar li {
+    width: auto;
+    height: auto;
+    margin: 10px;
+  }
+
+  .flip-card {
+    width: 90%;
+    margin: auto;
+  }
+
+  .card-back {
+    font-size: 16px;
+  }
+
+  main {
+    margin: 5vh;
+  }
+
+  main > h2 {
+    font-size: 1.2em;
+    padding-top: 10px;
+  }
+
+  .comicLink,
+  .movieLink:hover {
+    font-size: 14px;
+  }
+
+  .footerContainer img {
+    height: 120px;
+    width: 120px;
+  }
+}
